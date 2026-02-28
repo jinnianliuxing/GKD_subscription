@@ -122,5 +122,24 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 5,
+      name: '功能类-自动允许无线调试',
+      desc: '点击 ①✅始终允许 ②允许',
+      fastQuery: true,
+      rules: [
+        {
+          key: 0,
+          matches:
+            '[text$="通过此网络进行调试"][clickable=true][checked=false]',
+          exampleUrls: 'https://e.gkd.li/7e2c5172-1b35-4ddf-8a4c-b19d25330d64',
+          snapshotUrls: 'https://i.gkd.li/i/25256451', //真我📱 无界面id
+        },
+        {
+          preKeys: [0],
+          matches: '[text="允许" || text="确定"][clickable=true]',
+        },
+      ],
+    },
   ],
 });
