@@ -104,30 +104,44 @@ export default defineGkdApp({
     {
       key: 4,
       name: '功能类-勾选[已了解应用风险检测结果]',
+      desc: 'VIVO/HUAWEI适配',
       fastQuery: true,
       activityIds: [
         '.PackageInterceptActivity',
         '.PackageInstallerActivity',
         '.InstallStart',
+        '.NewInstallInstalling',
       ],
       rules: [
         {
           key: 0,
+          name: '勾选[已了解应用风险检测结果]',
           matches:
             '[vid="checkbox" || vid="deleted_file_state_cb"][checked=false]',
           snapshotUrls: [
-            'https://i.gkd.li/i/14595443',
-            'https://i.gkd.li/i/22870985',
+            'https://i.gkd.li/i/14595443', // HUAWEI
+            'https://i.gkd.li/i/22870985', // VIVO
+          ],
+          exampleUrls: [
+            'https://e.gkd.li/8ebedfcf-9d68-485c-b4b1-e8e2dc42bbd8', // HUAWEI
+            'https://e.gkd.li/d197b6ad-a931-498f-b817-fb90c911d67b', // VIVO
           ],
         },
         {
+          key: 1,
+          name: '点击[继续安装]',
           preKeys: [0],
-          matches: '@LinearLayout[clickable=true][id=null] > [text="继续安装"]', // 未知原因[text="继续安装"]无障碍反应慢，但测试发现使用自动化又没有延迟问题就先不改了
+          matches: '@LinearLayout[clickable=true][id=null] > [text="继续安装"]',
+          action: 'clickCenter', // log得知已发出点击事件，但系统未响应
           snapshotUrls: 'https://i.gkd.li/i/22870985',
-          exampleUrls: [
-            'https://e.gkd.li/0e10235e-c253-460b-b0e5-0a1afdd418a9', // 自动化
-            'https://e.gkd.li/13d7bb9d-d715-4f35-b2e2-bbedb534f19c', // 传统无障碍
-          ],
+          exampleUrls: 'https://e.gkd.li/d197b6ad-a931-498f-b817-fb90c911d67b',
+        },
+        {
+          preKeys: [1],
+          name: '点击[完成]',
+          matches: '@[clickable=true][vid="done_button"]',
+          snapshotUrls: 'https://i.gkd.li/i/25816401',
+          exampleUrls: 'https://e.gkd.li/00166afa-f8cb-4389-87b0-948a5a75f3d5',
         },
       ],
     },
