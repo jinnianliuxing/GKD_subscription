@@ -13,12 +13,21 @@ export default defineGkdApp({
       priorityTime: 10000,
       rules: [
         {
+          key: 0,
           // 跳过节点位置与通知栏重合，需点击 clickable=true 的节点 https://github.com/AIsouler/GKD_subscription/issues/900
           fastQuery: true,
           matches:
             '@[clickable=true] > [text="跳过"][text.length<10][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/d310d2a0-4795-421d-82da-f3855fb7288b',
           snapshotUrls: 'https://i.gkd.li/i/20138053',
+        },
+        {
+          key: 1,
+          fastQuery: true,
+          matches:
+            '@[clickable=true][text^="跳过"] - [text="广告"][text.length<10][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/aa7e78f0-0cfe-490d-8d41-f3e41b906610',
+          snapshotUrls: 'https://i.gkd.li/i/25897923',
         },
       ],
     },
