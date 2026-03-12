@@ -1,4 +1,7 @@
 
+import { defineGkdApp } from '@gkd-kit/define';
+
+export default defineGkdApp({
   id: 'com.klcxkj.zqxy_kaihe',
   name: '悦享校园',
   groups: [
@@ -7,18 +10,18 @@
       "name": "悦享校园",
       "rules": [
         {
-          "key": 1,
-          "name": "局部广告-关闭按钮",
-          "matches": ["[vid='adv_container_layout'] > FrameLayout > ImageView[index=1]"],
-          "action": "clickNode",
-          "snapshotUrls": "https://i.gkd.li/i/25928092"
+          key: 1,
+          name: "局部广告-关闭按钮-FrameLayout",
+          matches: ["[vid='adv_container_layout'] > FrameLayout > ImageView[index=1]"],
+          action: "clickNode",
+          snapshotUrls: "https://i.gkd.li/i/25928092"
         },
         {
-          "key": 2,
-          "name": "局部广告-关闭按钮",
-          "matches": ["[vid='adv_container_layout'] ImageView[width=33][height=33][visibleToUser=true]"],
-          "action": "clickCenter",
-          "snapshotUrls": "https://i.gkd.li/i/25928209"
+          key: 2,
+          name: "局部广告-关闭按钮-33x33",
+          matches: ["[vid='adv_container_layout'] ImageView[width=33][height=33][visibleToUser=true]"],
+          action: "clickCenter",
+          snapshotUrls: "https://i.gkd.li/i/25928209"
         },
         {
           "key": 4,
